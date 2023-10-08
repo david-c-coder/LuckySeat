@@ -1,4 +1,3 @@
-/*LuckySeat is for teachers*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -104,6 +103,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
                     (HMENU)ID_LuckyButton,
                     hInst,
                     NULL);
+
             hViewButton = CreateWindow("BUTTON",
                     TEXT("查看结果"),
                     WS_CHILD | WS_VISIBLE,
@@ -115,7 +115,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
                     (HMENU)ID_ViewButton,
                     hInst,
                     NULL);
-
 
             hOutBox = CreateWindow("EDIT",
                     NULL,
@@ -176,7 +175,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
             hdc = BeginPaint(hwnd, &ps);
             GetClientRect(hwnd, &rect);
             SetBkMode(hdc, TRANSPARENT);
-
             hFont = CreateFont(32,
                     16,
                     0,
@@ -199,7 +197,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
             TextOut(hdc, 20, 180, input, strlen(input));
             SelectObject(hdc, hFontOld);
             DeleteObject(hFont);
-
             EndPaint(hwnd, &ps);
             break;
 
@@ -226,54 +223,41 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
                     int  i = 0, j = 0, stu_qty = 0, count = 0;
                     long in_len = 0, str_len = 0;
 
-                    char *str_input = (char *)malloc(1024);
+                    char *str_input = NULL;
+                    str_input = (char *)malloc(1024);
                     if(NULL == str_input)
                     {
-                         MessageBox(NULL, "申请内存不成功！",
-                                    "温馨提示!", MB_OK);
+                         MessageBox(NULL, "申请内存不成功！", "温馨提示!", MB_OK);
                          break;
                     }
-                    else
-                    {
-                        memset(str_input, 0, 1024);
-                    }
+                    memset(str_input, 0, 1024);
 
-                    char *temp = (char *)malloc(1024);
+                    char *temp = NULL;
+                    temp = (char *)malloc(1024);
                     if(NULL == temp)
                     {
-                         MessageBox(NULL, "申请内存不成功！",
-                                    "温馨提示!", MB_OK);
+                         MessageBox(NULL, "申请内存不成功！", "温馨提示!", MB_OK);
                          break;
                     }
-                    else
-                    {
-                        memset(temp, 0, 1024);
-                    }
+                    memset(temp, 0, 1024);
 
-                    unsigned long *result = (unsigned long *)
-                        malloc(20000 * sizeof(unsigned long));
+                    unsigned long *result = NULL;
+                    result = (unsigned long *)malloc(20000*sizeof(unsigned long));
                     if(NULL == result)
                     {
-                         MessageBox(NULL, "申请内存不成功！",
-                                    "温馨提示!", MB_OK);
+                         MessageBox(NULL, "申请内存不成功！", "温馨提示!", MB_OK);
                          break;
                     }
-                    else
-                    {
-                        memset(result, 0, 20000 * sizeof(unsigned long));
-                    }
+                    memset(result, 0, 20000*sizeof(unsigned long));
 
-                    char *buffer = (char *)malloc(1048576);
+                    char *buffer = NULL;
+                    buffer = (char *)malloc(1048576);
                     if(NULL == buffer)
                     {
-                         MessageBox(NULL, "申请内存不成功！",
-                                    "温馨提示!", MB_OK);
+                         MessageBox(NULL, "申请内存不成功！", "温馨提示!", MB_OK);
                          break;
                     }
-                    else
-                    {
-                        memset(buffer, 0, 1048576);
-                    }
+                    memset(buffer, 0, 1048576);
 
                    
                     in_len = GetWindowTextLength(hInBox) + 1;
