@@ -5,3 +5,4 @@ LuckySeat.o: LuckySeat.c
 clean:
 	rm -f ./*.o
 	rm -f ./*.exe
+	rm -f ./result.txt
