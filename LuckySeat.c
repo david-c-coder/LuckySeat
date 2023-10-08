@@ -227,17 +227,53 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
                     long in_len = 0, str_len = 0;
 
                     char *str_input = (char *)malloc(1024);
-                    memset(str_input, 0, 1024);
+                    if(NULL == str_input)
+                    {
+                         MessageBox(NULL, "申请内存不成功！",
+                                    "温馨提示!", MB_OK);
+                         break;
+                    }
+                    else
+                    {
+                        memset(str_input, 0, 1024);
+                    }
 
                     char *temp = (char *)malloc(1024);
-                    memset(temp, 0, 1024);
+                    if(NULL == temp)
+                    {
+                         MessageBox(NULL, "申请内存不成功！",
+                                    "温馨提示!", MB_OK);
+                         break;
+                    }
+                    else
+                    {
+                        memset(temp, 0, 1024);
+                    }
 
                     unsigned long *result = (unsigned long *)
                         malloc(20000 * sizeof(unsigned long));
-                    memset(result, 0, 20000 * sizeof(unsigned long));
+                    if(NULL == result)
+                    {
+                         MessageBox(NULL, "申请内存不成功！",
+                                    "温馨提示!", MB_OK);
+                         break;
+                    }
+                    else
+                    {
+                        memset(result, 0, 20000 * sizeof(unsigned long));
+                    }
 
                     char *buffer = (char *)malloc(1048576);
-                    memset(buffer, 0, 1048576);
+                    if(NULL == buffer)
+                    {
+                         MessageBox(NULL, "申请内存不成功！",
+                                    "温馨提示!", MB_OK);
+                         break;
+                    }
+                    else
+                    {
+                        memset(buffer, 0, 1048576);
+                    }
 
                    
                     in_len = GetWindowTextLength(hInBox) + 1;
