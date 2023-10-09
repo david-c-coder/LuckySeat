@@ -15,8 +15,10 @@ HWND hInBox, hOutBox, hLuckyButton, hViewButton;
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
-        PSTR szCmdLine, int iCmdShow)
+int WINAPI WinMain(HINSTANCE hInstance,
+        HINSTANCE hPrevInstance,
+        PSTR szCmdLine,
+        int iCmdShow)
 { 
     HWND hwnd;
 	MSG msg;
@@ -81,8 +83,11 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
         case WM_CREATE:
             hInBox = CreateWindow("EDIT",
                     NULL,
-                    WS_CHILD | WS_VISIBLE | ES_LEFT | WS_BORDER |
-                    ES_AUTOHSCROLL,
+                    WS_CHILD
+                    | WS_VISIBLE
+                    | ES_LEFT
+                    | WS_BORDER
+                    | ES_AUTOHSCROLL,
                     260,
                     180,
                     200,
@@ -94,7 +99,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 
             hLuckyButton = CreateWindow("BUTTON",
                     TEXT("开始摇号"),
-                    WS_CHILD | WS_VISIBLE,
+                    WS_CHILD
+                    | WS_VISIBLE,
                     640,
                     180,
                     128,
@@ -106,7 +112,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 
             hViewButton = CreateWindow("BUTTON",
                     TEXT("查看结果"),
-                    WS_CHILD | WS_VISIBLE,
+                    WS_CHILD
+                    | WS_VISIBLE,
                     820,
                     180,
                     128,
@@ -118,8 +125,15 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 
             hOutBox = CreateWindow("EDIT",
                     NULL,
-                    WS_CHILD | WS_VISIBLE | ES_LEFT | WS_BORDER | ES_MULTILINE | 
-                    WS_VSCROLL | WS_HSCROLL | ES_AUTOVSCROLL | ES_AUTOHSCROLL,
+                    WS_CHILD
+                    | WS_VISIBLE
+                    | ES_LEFT
+                    | WS_BORDER
+                    | ES_MULTILINE
+                    | WS_VSCROLL
+                    | WS_HSCROLL
+                    | ES_AUTOVSCROLL
+                    | ES_AUTOHSCROLL,
                     20,
                     250,
                     960,
@@ -175,6 +189,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
             hdc = BeginPaint(hwnd, &ps);
             GetClientRect(hwnd, &rect);
             SetBkMode(hdc, TRANSPARENT);
+
             hFont = CreateFont(32,
                     16,
                     0,
@@ -189,6 +204,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
                     PROOF_QUALITY,
                     FIXED_PITCH | FF_MODERN,
                     "宋体");
+
             hFontOld = (HFONT)SelectObject(hdc, hFont);
             SetTextColor(hdc, RGB(0, 0, 255));
             TextOut(hdc, 330, 20, app_name, strlen(app_name));
@@ -227,7 +243,10 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
                     str_input = (char *)malloc(1024);
                     if(NULL == str_input)
                     {
-                         MessageBox(NULL, "申请内存不成功！", "温馨提示!", MB_OK);
+                         MessageBox(NULL,
+                                 "申请内存不成功！",
+                                 "温馨提示!",
+                                 MB_OK);
                          break;
                     }
                     memset(str_input, 0, 1024);
@@ -236,25 +255,35 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
                     temp = (char *)malloc(1024);
                     if(NULL == temp)
                     {
-                         MessageBox(NULL, "申请内存不成功！", "温馨提示!", MB_OK);
+                         MessageBox(NULL,
+                                 "申请内存不成功！",
+                                 "温馨提示!",
+                                 MB_OK);
                          break;
                     }
                     memset(temp, 0, 1024);
 
                     unsigned long *result = NULL;
-                    result = (unsigned long *)malloc(20000*sizeof(unsigned long));
+                    result = (unsigned long *)malloc(20000 
+                            * sizeof(unsigned long));
                     if(NULL == result)
                     {
-                         MessageBox(NULL, "申请内存不成功！", "温馨提示!", MB_OK);
+                         MessageBox(NULL,
+                                 "申请内存不成功！",
+                                 "温馨提示!",
+                                 MB_OK);
                          break;
                     }
-                    memset(result, 0, 20000*sizeof(unsigned long));
+                    memset(result, 0, 20000 * sizeof(unsigned long));
 
                     char *buffer = NULL;
                     buffer = (char *)malloc(1048576);
                     if(NULL == buffer)
                     {
-                         MessageBox(NULL, "申请内存不成功！", "温馨提示!", MB_OK);
+                         MessageBox(NULL,
+                                 "申请内存不成功！",
+                                 "温馨提示!",
+                                 MB_OK);
                          break;
                     }
                     memset(buffer, 0, 1048576);
@@ -263,9 +292,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
                     in_len = GetWindowTextLength(hInBox) + 1;
                     GetWindowText(hInBox, str_input, in_len);
                     stu_qty = atoi(str_input);
-                    if((stu_qty <= 0) || (stu_qty > 10000) ||
-                            (strlen(itoa(stu_qty, temp, 10)) != 
-                             strlen(str_input)))
+                    if((stu_qty <= 0) || (stu_qty > 10000)
+                            || (strlen(itoa(stu_qty, temp, 10))
+                                != strlen(str_input)))
                     {
                         
                         Beep(1200, 100);
@@ -296,16 +325,19 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
                         }
                     }
 
-                    str_len += sprintf(buffer + str_len, "温馨提示：摇号之前，"\
+                    str_len += sprintf(buffer + str_len,
+                            "温馨提示：摇号之前，"\
                             "请先把座位编号，摇号结果同步输出到 result.txt "\
                             "文件！\r\n摇号结果：(学号->座号)\r\n\r\n");
                     for(i = 0; i < stu_qty; ++i)
                     {
-                        str_len += sprintf(buffer + str_len, "(学%d->座%lu), ",
-                                (i + 1), *(result + i));
-                        count++;
-                        if(count % 10 == 0)str_len += sprintf(buffer + str_len,
-                                "\r\n");
+                        str_len += sprintf(buffer + str_len,
+                                "(学%d->座%lu), ",
+                                (i + 1),
+                                *(result + i));
+                        ++count;
+                        if(count % 10 == 0)str_len 
+                            += sprintf(buffer + str_len, "\r\n");
                     }
 
                     SetWindowText(hOutBox, buffer);
