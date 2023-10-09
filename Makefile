@@ -1,3 +1,4 @@
+#Compiling environment: MinGW
 LuckySeat: LuckySeat.o
 	gcc LuckySeat.o -s -o LuckySeat -mwindows
 LuckySeat.o: LuckySeat.c
