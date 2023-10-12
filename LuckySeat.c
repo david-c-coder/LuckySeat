@@ -234,6 +234,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
                     break;
 
                 case ID_LuckyButton:
+                    ; //fixed a bug.  it seems that clang does not allow to define variable after case:
                     unsigned int seed = 0;
                     struct _timeb timeBuf;
                     int  i = 0, j = 0, stu_qty = 0, count = 0;
