@@ -19,7 +19,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR szCmdLine,
     HWND hwnd;
     MSG msg;
     WNDCLASS wndclass;
-    char *title = "LuckySeat v 1.0  Copyright [C] 2018 - 2023 "
+    const char *title = "LuckySeat v 1.0  Copyright [C] 2018 - 2023 "
                   "David He(老何)  e-mail: david_he2008@126.com";
 
     wndclass.style = CS_HREDRAW | CS_VREDRAW;
@@ -54,10 +54,10 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
     HDC hdc;
     PAINTSTRUCT ps;
     RECT rect;
-    char *app_name = "LuckySeat v 1.0";
-    char *mottoA = "每棵苗都需要阳光雨露！";
-    char *mottoB = "教育公平从这里开始！";
-    char *input = "请输入学生人数：";
+    const char *app_name = "LuckySeat v 1.0";
+    const char *mottoA = "每棵苗都需要阳光雨露！";
+    const char *mottoB = "教育公平从这里开始！";
+    const char *input = "请输入学生人数：";
 
     LOGFONT logFont;
     HFONT hFont, hFontOld;
