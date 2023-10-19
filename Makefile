@@ -2,7 +2,7 @@
 
 CC=clang
 CXX=clang++
-CFLAGS=-Wall -c -O3
+CFLAGS=-Wall -c -O3 -Wno-invalid-source-encoding
 LDFLAGS=-s -mwindows
 
 src=$(wildcard *.c)
